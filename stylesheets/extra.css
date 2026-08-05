@@ -1,0 +1,39 @@
+/* Keep identifier/default columns on one line — but only where the
+   viewport can afford it; on narrow screens let them wrap instead of
+   forcing the whole table to side-scroll. */
+@media screen and (min-width: 45em) {
+  .md-typeset table td:first-child code,
+  .md-typeset table td:nth-child(4) code {
+    overflow-wrap: normal;
+    white-space: nowrap;
+    word-break: normal;
+  }
+}
+
+.md-typeset table[data-ssl-table="exceptions"] {
+  /* display/width override Material's `table:not([class])` inline-block
+     rule (equal specificity; this sheet loads later), replacing the old
+     JS inline-style workaround. */
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.md-typeset .md-typeset__table:has(> table[data-ssl-table="exceptions"]) {
+  display: block;
+}
+
+.md-typeset table[data-ssl-table="exceptions"] col {
+  width: 50%;
+}
+
+.md-typeset table[data-ssl-table="exceptions"] th,
+.md-typeset table[data-ssl-table="exceptions"] td {
+  overflow-wrap: break-word;
+  width: 50%;
+  word-break: normal;
+}
+
+.md-typeset table[data-ssl-table="exceptions"] td code {
+  white-space: normal;
+}
